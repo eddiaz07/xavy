@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  description :text
+#  hardness    :string
 #  name        :string
 #  schedule    :text
 #  created_at  :datetime         not null
