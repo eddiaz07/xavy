@@ -1,7 +1,9 @@
 <%= simple_form_for @activity, url: url, html: { novalidate: true, class: 'needs-validation' }   do |f| %>
 <%= f.input :name, required: true %>
 <%= f.input :description, as: :text, required: true %>
+<%= f.input :hardness, collection:['Baja', 'Media', 'Alta'],as: :select ,  required: true%>
 <%= f.input :schedule, as: :text, required: true %>
 <%= f.input :venue_id, collection: Venue.by_name, as: :select, label_method: :name, value_method: :id, required: true %>
 <%= f.button :submit %>
+
 <% end %>

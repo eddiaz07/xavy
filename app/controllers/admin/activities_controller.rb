@@ -55,6 +55,7 @@ class Admin::ActivitiesController < Admin::ApplicationController
   def activity_params
     params.require(:activity).permit(:name,
                                   :description,
+                                  :hardness,
                                   :schedule,
                                   :venue_id)
   end
