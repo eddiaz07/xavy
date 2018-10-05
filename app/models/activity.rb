@@ -21,7 +21,8 @@ class Activity < ApplicationRecord
   has_and_belongs_to_many :tags
 
   scope :by_name, -> { order(:name) }
-
+  def eliminar_tag
+  end
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :schedule, presence: true

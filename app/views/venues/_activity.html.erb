@@ -11,7 +11,7 @@
         Dificultad: <span><%= activity.hardness %></span>    
       </p>
       <p><% activity.tags.each do |tag| %>
-      <%= link_to tag.title, admin_tag_path(tag), class: 'badge badge-light' %>
+      <%= link_to tag.title, tag_path(tag.id), class: 'badge badge-light' %>
   <% end %></p>
     </div>
   </div>

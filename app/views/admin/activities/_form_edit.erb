@@ -5,6 +5,16 @@
 
 <%= f.input :schedule, as: :text, required: true %>
 <%= f.input :venue_id, collection: Venue.by_name, as: :select, label_method: :name, value_method: :id, required: true %>
+<div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.input :tags ,collection: Tag.by_title.collect {|u| [  u.title , u.id]} ,as: :select%>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.input :eliminar_tag ,collection: @activity.tags.collect {|u| [  u.title , u.id]} ,as: :select%>
+    </div>
+  </div>
+
+
 
 <%= f.button :submit %>
 

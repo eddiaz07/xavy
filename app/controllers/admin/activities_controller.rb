@@ -29,8 +29,22 @@ class Admin::ActivitiesController < Admin::ApplicationController
 
   def update
     if @activity.update(activity_params)
-      t=Tag.find(tags_params['tags'])
-      @activity.tags << t;
+      if tags_params['tags']!=''
+        t=Tag.find(tags_params['tags'])
+        if !@activity.tags.exists?tags_params['tags']
+          @activity.tags << t;
+          flash[:success] = 'Tag asignado correctamente'
+        end
+      end
+      if tag_params['eliminar_tag']!=''
+        d=Tag.find(tag_params['eliminar_tag'])
+        if @activity.tags.exists?tag_params['eliminar_tag']
+          @activity.tags.delete(d);
+          flash[:success] = 'Tag eliminado correctamente'
+        end
+      end
+      
+      
       flash[:success] = 'Actividad fue actualizada exitosamente'
       redirect_to admin_activities_url
     else
@@ -57,14 +71,17 @@ class Admin::ActivitiesController < Admin::ApplicationController
 
   def activity_params
     params.require(:activity).permit(:name,
-                                  :description,
-                                  :hardness,
-                                  :schedule,
-                                  :venue_id
-                                  )
+      :description,
+      :hardness,
+      :schedule,
+      :venue_id
+      )
   end
   def tags_params
     params.require(:activity).permit(:tags)
+  end
+  def tag_params
+    params.require(:activity).permit(:eliminar_tag)
   end
 
 

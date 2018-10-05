@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'venues#index'
   get :home, to: 'pages#home'
 
+
   namespace :admin do
     get '/' => 'activities#index'
     resources :activities
@@ -11,4 +12,5 @@ Rails.application.routes.draw do
   end
 
   resources :venues, only: [:index, :show]
+  resources :tags, only: [ :show]
 end
