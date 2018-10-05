@@ -18,6 +18,7 @@
 
 class Activity < ApplicationRecord
   belongs_to :venue
+  has_and_belongs_to_many :tags
 
   scope :by_name, -> { order(:name) }
 
