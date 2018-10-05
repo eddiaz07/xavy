@@ -19,3 +19,12 @@
     <%= link_to 'Destruir', admin_activity_path(activity), class: 'btn btn-outline-danger', method: :delete, data: {confirm: '¿Está seguro?'} %>
   </td>
 </tr>
+<tr>
+  <td></td>
+  <td colspan="5">
+
+  <% activity.tags.each do |tag| %>
+      <%= link_to tag.title, admin_tag_path(tag), class: 'badge badge-light' %>
+  <% end %>
+  </td>
+</tr>

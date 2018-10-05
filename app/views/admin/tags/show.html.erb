@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= @tag.title %></h1>
+  <hr class="my-4">
+  <div class="card-columns">
+  	<% @tag.activities.each do |act|%>
+  	<div class="card">
+    <img class="card-img-top" src="<%= url_for(act.venue.image) if act.venue.image.attached? %>" alt="activity img">
+    <div class="card-body">
+      <h5 class="card-title"><%=act.name %></h5>
+      <p class="card-text"><%=act.description %></p>
+      <p class="card-text"><small class="text-muted"><%=act.schedule %></small></p>
+    </div>
+  </div>
+  	<%end%>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 class Admin::ActivitiesController < Admin::ApplicationController
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_activity, only: [:show, :edit, :update,:add, :destroy]
 
   def index
     @activities = Activity.by_name
@@ -15,6 +15,7 @@ class Admin::ActivitiesController < Admin::ApplicationController
   def edit
   end
 
+
   def create
     @activity = Activity.new(activity_params)
     if @activity.save
@@ -28,6 +29,8 @@ class Admin::ActivitiesController < Admin::ApplicationController
 
   def update
     if @activity.update(activity_params)
+      t=Tag.find(tags_params['tags'])
+      @activity.tags << t;
       flash[:success] = 'Actividad fue actualizada exitosamente'
       redirect_to admin_activities_url
     else
@@ -57,6 +60,12 @@ class Admin::ActivitiesController < Admin::ApplicationController
                                   :description,
                                   :hardness,
                                   :schedule,
-                                  :venue_id)
+                                  :venue_id
+                                  )
   end
+  def tags_params
+    params.require(:activity).permit(:tags)
+  end
+
+
 end

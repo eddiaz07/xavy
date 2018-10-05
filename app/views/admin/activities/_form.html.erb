@@ -2,8 +2,10 @@
 <%= f.input :name, required: true %>
 <%= f.input :description, as: :text, required: true %>
 <%= f.input :hardness, collection:['Baja', 'Media', 'Alta'],as: :select ,  required: true%>
+
 <%= f.input :schedule, as: :text, required: true %>
 <%= f.input :venue_id, collection: Venue.by_name, as: :select, label_method: :name, value_method: :id, required: true %>
+<%= f.input :tags ,collection: Tag.by_title.collect {|u| [  u.title , u.id]} ,as: :select%>
 <%= f.button :submit %>
 
 <% end %>
