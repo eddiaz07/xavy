@@ -1,0 +1,11 @@
+<div class="container mt-5">
+  <div class="panel">
+    <div class="panel__header">
+      <h5>Crear tag</h5>
+      <%= link_to 'Cancel', admin_tags_path, class: 'btn btn-outline-danger' %>
+    </div>
+    <div class="panel__content">
+      <%= render 'form', url: admin_tags_path %>
+    </div>
+  </div>
+</div>

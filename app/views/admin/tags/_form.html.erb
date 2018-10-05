@@ -1,0 +1,5 @@
+<%= simple_form_for @tag, url: url, html: { novalidate: true, class: 'needs-validation' }   do |f| %>
+<%= f.input :title , as: :string ,required: true %>
+<%= f.button :submit %>
+
+<% end %>

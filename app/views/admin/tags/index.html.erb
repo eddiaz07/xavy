@@ -1,0 +1,22 @@
+<% content_for :header do %>
+<div class="admin__header">
+  <h5 class="mr-auto">
+    Tags
+  </h5>
+  <%= link_to 'Nuevo', new_admin_tag_path, class: 'btn btn-outline-success' %>
+</div>
+<% end %>
+
+<div class="admin__content">
+  <table class="table admin__table">
+    <thead>
+      <tr>
+        <th class="border-top-0" scope="col-6">Titulo</th>
+        <th class="border-top-0" scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @tags %>
+    </tbody>
+  </table>
+</div>
