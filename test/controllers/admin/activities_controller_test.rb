@@ -25,7 +25,7 @@ class Admin::ActivitiesControllerTest < ActionDispatch::IntegrationTest
     activity = activities(:one)
     get edit_admin_activity_url(activity.id)
     assert_response :success
-    patch admin_activity_url(activity), params: { activity: {name: 'other',hardness: 'Dificultad', description: 'descripcion prueba', schedule: 'Lunes 5:00am',venue_id: venues(:one).id } }
+    patch admin_activity_url(activity), params: { activity: {name: 'other',hardness: 'Dificultad', description: 'descripcion prueba', schedule: 'Lunes 5:00am',venue_id: venues(:one).id, tags: '', eliminar_tag: '' } }
     assert_response :redirect
     follow_redirect!
     assert_response :success
