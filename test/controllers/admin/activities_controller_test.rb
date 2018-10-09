@@ -12,7 +12,7 @@ class Admin::ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert_difference('Activity.count', 1) do
-      post admin_activities_url, params: { activity: { name: 'actividad prueba', description: 'descripcion prueba', schedule: 'Lunes 5:00am', venue_id: venues(:one).id } }
+      post admin_activities_url, params: { activity: { name: 'actividad prueba',hardness: 'Dificultad', description: 'descripcion prueba', schedule: 'Lunes 5:00am', venue_id: venues(:one).id } }
     end
     assert_response :redirect
     follow_redirect!
@@ -25,7 +25,7 @@ class Admin::ActivitiesControllerTest < ActionDispatch::IntegrationTest
     activity = activities(:one)
     get edit_admin_activity_url(activity.id)
     assert_response :success
-    patch admin_activity_url(activity), params: { activity: { name: 'other', description: 'descripcion prueba', schedule: 'Lunes 5:00am',venue_id: venues(:one).id } }
+    patch admin_activity_url(activity), params: { activity: {name: 'other',hardness: 'Dificultad', description: 'descripcion prueba', schedule: 'Lunes 5:00am',venue_id: venues(:one).id } }
     assert_response :redirect
     follow_redirect!
     assert_response :success
